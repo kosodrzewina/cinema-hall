@@ -7,6 +7,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class App extends Application {
+    public Button[][] sectionFirstSeats, sectionSecondSeats;
+
     public Button[][] fillSeats(GridPane gridPane, char firstRow) {
         Button[][] seats = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
 
@@ -29,8 +31,8 @@ public class App extends Application {
         GridPane sectionFirst =  (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond =  (GridPane) loader.getNamespace().get("sectionSecond");
 
-        Button[][] sectionFirstSeats = fillSeats(sectionFirst, 'A');
-        Button[][] sectionSecondSeats = fillSeats(sectionSecond, 'D');
+        sectionFirstSeats = fillSeats(sectionFirst, 'A');
+        sectionSecondSeats = fillSeats(sectionSecond, 'D');
 
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
