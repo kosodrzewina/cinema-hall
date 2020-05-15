@@ -28,8 +28,8 @@ public class App extends Application {
         GridPane sectionFirst =  (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond =  (GridPane) loader.getNamespace().get("sectionSecond");
 
-        fillSeats(sectionFirst);
-        fillSeats(sectionSecond);
+        Button[][] sectionFirstSeats = fillSeats(sectionFirst);
+        Button[][] sectionSecondSeats = fillSeats(sectionSecond);
 
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
