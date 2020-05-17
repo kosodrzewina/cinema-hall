@@ -1,10 +1,14 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.awt.event.MouseEvent;
 
 public class App extends Application {
     public Button[][] sectionFirstSeats, sectionSecondSeats;
@@ -15,6 +19,9 @@ public class App extends Application {
         for (int i = 0; i < gridPane.getRowCount(); i++) {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 Button temp = new Button(firstRow + Integer.toString(j + 1));
+                temp.setId("button" + temp.getText());
+                temp.setOnAction(actionEvent -> System.out.println("seat " + temp.getText() + " clicked"));
+
                 gridPane.add(temp, j, i);
                 seats[i][j] = temp;
             }
