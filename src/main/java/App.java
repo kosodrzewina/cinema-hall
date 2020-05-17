@@ -26,6 +26,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        stage.setTitle("Cinema Hall");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/hall.fxml"));
         Parent root = loader.load();
         GridPane sectionFirst =  (GridPane) loader.getNamespace().get("sectionFirst");
