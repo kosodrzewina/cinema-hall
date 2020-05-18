@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -29,6 +30,26 @@ public class App extends Application {
         return seats;
     }
 
+    public static void blinkLogin(PasswordField passwordField) {
+        String originalStyle = "-fx-background-color: #FFFFFF";
+        String flashStyle = "-fx-background-color: #D32F2F";
+
+        new Thread(() -> {
+            boolean blink = true;
+
+            for (int i = 0; i < 6; i++) {
+                passwordField.setStyle((blink) ? flashStyle : originalStyle);
+                blink = !blink;
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Cinema Hall");
@@ -44,8 +65,10 @@ public class App extends Application {
         stage.show();
 
         stage.setOnCloseRequest(windowEvent -> {
-            if (!HallController.getAccess())
+            if (!HallController.getAccess()) {
+                blinkLogin((PasswordField) loader.getNamespace().get("passwordField"));
                 windowEvent.consume();
+            }
         });
     }
 }
