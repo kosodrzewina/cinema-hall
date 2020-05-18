@@ -4,7 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
 public class HallController {
-    private String password = "haslo123";
+    private final String password = "haslo123";
     private boolean access = false;
 
     @FXML
