@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    public Button[][] sectionFirstSeats, sectionSecondSeats;
+    public static Button[][] sectionFirstSeats, sectionSecondSeats;
 
     // creates buttons in grid pane and returns array of these buttons
     public Button[][] fillSeats(GridPane gridPane, char firstRow) {
