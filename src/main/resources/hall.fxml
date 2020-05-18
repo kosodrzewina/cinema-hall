@@ -10,7 +10,7 @@
          <children>
             <BorderPane prefHeight="400.0" prefWidth="739.0">
                <left>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #E57373;" BorderPane.alignment="CENTER">
+                  <HBox prefHeight="366.0" prefWidth="185.0" style="-fx-background-color: #E57373;" BorderPane.alignment="CENTER">
                      <children>
                         <Label text="in progress" />
                      </children>
@@ -27,16 +27,16 @@
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                              <RowConstraints valignment="CENTER" />
+                              <RowConstraints maxHeight="20.0" valignment="CENTER" />
                             <RowConstraints maxHeight="30.0" minHeight="2.399998569488531" prefHeight="2.399998569488531" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="91.40000762939454" valignment="CENTER" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="91.40000762939454" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="255.99999237060547" minHeight="10.0" prefHeight="255.99999237060547" valignment="CENTER" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <HBox prefHeight="30.0" style="-fx-background-color: #1A237E;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                              <HBox alignment="CENTER" prefHeight="30.0" style="-fx-background-color: #1A237E;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                  <children>
-                                    <Label text="EKRAN" textFill="WHITE" />
+                                    <Label alignment="CENTER" text="EKRAN" textFill="WHITE" />
                                  </children></HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #5C6BC0;" GridPane.rowIndex="2">
                                  <children>
