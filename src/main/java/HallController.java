@@ -25,6 +25,7 @@ public class HallController {
             access = true;
             passwordField.setPromptText("zalogowano");
             passwordField.setDisable(true);
+
             unlockSeats(App.sectionFirstSeats);
             unlockSeats(App.sectionSecondSeats);
         }
