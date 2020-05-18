@@ -18,6 +18,7 @@ public class App extends Application {
                 Button temp = new Button(firstRow + Integer.toString(j + 1));
                 temp.setId("button" + temp.getText());
                 temp.setOnAction(actionEvent -> System.out.println("seat " + temp.getText() + " clicked"));
+                temp.setDisable(true);
 
                 gridPane.add(temp, j, i);
                 seats[i][j] = temp;
