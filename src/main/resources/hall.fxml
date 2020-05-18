@@ -13,7 +13,6 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label text="in progress" />
-                        <Label fx:id="test" text="not granted" />
                      </children>
                   </HBox>
                </left>
