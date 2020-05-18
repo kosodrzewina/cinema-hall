@@ -9,13 +9,6 @@
       <HBox layoutX="210.0" layoutY="150.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #7986CB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <BorderPane prefHeight="400.0" prefWidth="739.0">
-               <top>
-                  <Button fx:id="submitPassword" mnemonicParsing="false" onAction="#onSubmitPassword" text="OK" BorderPane.alignment="CENTER">
-                     <graphic>
-                        <PasswordField fx:id="passwordField" promptText="hasło" />
-                     </graphic>
-                  </Button>
-               </top>
                <left>
                   <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
@@ -90,6 +83,17 @@
                      </children>
                   </HBox>
                </center>
+               <top>
+                  <HBox prefHeight="30.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="submitPassword" mnemonicParsing="false" onAction="#onSubmitPassword" style="-fx-background-color: #5C6BC0;" text="OK">
+                           <graphic>
+                              <PasswordField fx:id="passwordField" promptText="hasło" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </top>
             </BorderPane>
          </children></HBox>
    </children>
