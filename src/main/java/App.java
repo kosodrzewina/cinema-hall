@@ -42,5 +42,10 @@ public class App extends Application {
 
         stage.setScene(new Scene(root, 800, 600));
         stage.show();
+
+        stage.setOnCloseRequest(windowEvent -> {
+            if (!HallController.getAccess())
+                windowEvent.consume();
+        });
     }
 }
