@@ -28,7 +28,8 @@ public class HallController {
 
             unlockSeats(App.sectionFirstSeats);
             unlockSeats(App.sectionSecondSeats);
-        }
+        } else
+            App.blinkLogin(passwordField);
 
         passwordField.setText("");
     }
