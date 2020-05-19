@@ -4,13 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HallController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HallController">
    <children>
-      <HBox layoutX="210.0" layoutY="150.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #7986CB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="210.0" layoutY="150.0" prefHeight="472.0" prefWidth="712.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-112.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane prefHeight="400.0" prefWidth="739.0">
+            <BorderPane prefHeight="420.0" prefWidth="834.0">
                <left>
-                  <HBox prefHeight="366.0" prefWidth="185.0" style="-fx-background-color: #E57373;" BorderPane.alignment="CENTER">
+                  <HBox prefHeight="366.0" prefWidth="185.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
                      <children>
                         <Label text="in progress" />
                      </children>
@@ -22,23 +22,23 @@
                <center>
                   <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <GridPane prefHeight="366.0" prefWidth="744.0">
+                        <GridPane prefHeight="366.0" prefWidth="744.0" stylesheets="@style.css">
                           <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="800.0" prefWidth="700.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="20.0" valignment="CENTER" />
                             <RowConstraints maxHeight="30.0" minHeight="2.399998569488531" prefHeight="2.399998569488531" valignment="CENTER" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="91.40000762939454" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="91.40000762939454" valignment="CENTER" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="91.40000762939454" valignment="CENTER" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="255.99999237060547" minHeight="10.0" prefHeight="255.99999237060547" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="255.99999237060547" valignment="CENTER" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER" prefHeight="30.0" style="-fx-background-color: #1A237E;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                              <HBox alignment="CENTER" prefHeight="30.0" style="-fx-background-color: #D32F2F;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                  <children>
                                     <Label alignment="CENTER" text="EKRAN" textFill="WHITE" />
                                  </children></HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #5C6BC0;" GridPane.rowIndex="2">
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #212121;" GridPane.rowIndex="2">
                                  <children>
                                     <GridPane fx:id="sectionFirst">
                                       <columnConstraints>
@@ -64,7 +64,7 @@
                                     </GridPane>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #5C6BC0;" GridPane.rowIndex="4">
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #212121;" GridPane.rowIndex="4">
                                  <children>
                                     <GridPane fx:id="sectionSecond">
                                       <columnConstraints>
@@ -98,7 +98,7 @@
                <top>
                   <HBox prefHeight="30.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="submitPassword" mnemonicParsing="false" onAction="#onSubmitPassword" style="-fx-background-color: #5C6BC0;" text="OK">
+                        <Button fx:id="submitPassword" mnemonicParsing="false" onAction="#onSubmitPassword" style="-fx-background-color: #D32F2F;" text="OK">
                            <graphic>
                               <PasswordField fx:id="passwordField" promptText="hasło" />
                            </graphic>
@@ -106,6 +106,9 @@
                      </children>
                   </HBox>
                </top>
+               <right>
+                  <HBox minWidth="0.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </right>
             </BorderPane>
          </children></HBox>
    </children>
