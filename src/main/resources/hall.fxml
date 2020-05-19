@@ -9,13 +9,6 @@
       <HBox layoutX="210.0" layoutY="150.0" prefHeight="472.0" prefWidth="712.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-112.0" AnchorPane.topAnchor="0.0">
          <children>
             <BorderPane fx:id="borderPane" HBox.hgrow="ALWAYS">
-               <left>
-                  <HBox prefHeight="366.0" prefWidth="185.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label text="in progress" />
-                     </children>
-                  </HBox>
-               </left>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -24,7 +17,7 @@
                      <children>
                         <GridPane prefHeight="366.0" prefWidth="744.0" stylesheets="@style.css">
                           <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="800.0" prefWidth="800.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="900.0" prefWidth="900.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="20.0" valignment="CENTER" />
@@ -106,6 +99,14 @@
                      </children>
                   </HBox>
                </top>
+               <left>
+                  <VBox prefHeight="406.0" prefWidth="186.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ChoiceBox prefWidth="500.0" />
+                        <Label fx:id="currentSeat" text="Wybrane miejsce:" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </left>
             </BorderPane>
          </children></HBox>
    </children>

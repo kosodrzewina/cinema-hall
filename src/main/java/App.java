@@ -3,7 +3,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -11,14 +13,14 @@ public class App extends Application {
     public static Button[][] sectionFirstSeats, sectionSecondSeats;
 
     // creates buttons in grid pane and returns array of these buttons
-    public Button[][] fillSeats(GridPane gridPane, char firstRow) {
+    public Button[][] fillSeats(GridPane gridPane, Label currentSeat, char firstRow) {
         Button[][] seats = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
 
         for (int i = 0; i < gridPane.getRowCount(); i++) {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 Button temp = new Button(firstRow + Integer.toString(j + 1));
                 temp.setId("button" + temp.getText());
-                temp.setOnAction(actionEvent -> System.out.println("seat " + temp.getText() + " clicked"));
+                temp.setOnAction(actionEvent -> currentSeat.setText("Wybrane miejsce: " + temp.getText()));
                 temp.setDisable(true);
 
                 gridPane.add(temp, j, i);
@@ -57,11 +59,12 @@ public class App extends Application {
         Parent root = loader.load();
         GridPane sectionFirst =  (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond =  (GridPane) loader.getNamespace().get("sectionSecond");
+        Label currentSeat = (Label) loader.getNamespace().get("currentSeat");
 
-        sectionFirstSeats = fillSeats(sectionFirst, 'A');
-        sectionSecondSeats = fillSeats(sectionSecond, 'D');
+        sectionFirstSeats = fillSeats(sectionFirst, currentSeat, 'A');
+        sectionSecondSeats = fillSeats(sectionSecond, currentSeat, 'D');
 
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
 
         stage.setOnCloseRequest(windowEvent -> {
