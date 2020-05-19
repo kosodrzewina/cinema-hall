@@ -8,7 +8,7 @@
    <children>
       <HBox layoutX="210.0" layoutY="150.0" prefHeight="472.0" prefWidth="712.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-112.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane prefHeight="420.0" prefWidth="834.0">
+            <BorderPane fx:id="borderPane" HBox.hgrow="ALWAYS">
                <left>
                   <HBox prefHeight="366.0" prefWidth="185.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
                      <children>
@@ -24,7 +24,7 @@
                      <children>
                         <GridPane prefHeight="366.0" prefWidth="744.0" stylesheets="@style.css">
                           <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="800.0" prefWidth="700.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="800.0" prefWidth="800.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="20.0" valignment="CENTER" />
@@ -106,9 +106,6 @@
                      </children>
                   </HBox>
                </top>
-               <right>
-                  <HBox minWidth="0.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </right>
             </BorderPane>
          </children></HBox>
    </children>
