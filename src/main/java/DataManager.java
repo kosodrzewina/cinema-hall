@@ -1,9 +1,22 @@
 import java.io.*;
 
 public class DataManager {
-    // @TODO
-    private static boolean[][] dataToBoolArray(StringBuilder chunk) {
-        boolean[][] bools = new boolean[0][];
+    // gets raw chunk and returns boolean array based on it
+    private static boolean[][] dataToBoolArray(StringBuilder chunk, int height, int width) {
+        boolean[][] bools = new boolean[height][width];
+        StringBuilder cleanedChunk = new StringBuilder();
+
+        // cleaning chunk
+        for (int i = 0; i < chunk.length(); i++) {
+            if (chunk.charAt(i) == '0' || chunk.charAt(i) == '1')
+                cleanedChunk.append(chunk.charAt(i));
+        }
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++)
+                bools[i][j] = (cleanedChunk.charAt((i * width) + j) != '0');
+        }
+
         return bools;
     }
 
@@ -24,14 +37,14 @@ public class DataManager {
                     while (!(line = bufferedReader.readLine()).equals("\t---"))
                         dataChunk.append(line);
 
-                    state[0] = dataToBoolArray(dataChunk);
+                    state[0] = dataToBoolArray(dataChunk, firstHeight, firstWidth);
                     dataChunk = new StringBuilder();
 
                     // get second chunk
                     while (!(line = bufferedReader.readLine()).equals("}"))
                         dataChunk.append(line);
 
-                    state[1] = dataToBoolArray(dataChunk);
+                    state[1] = dataToBoolArray(dataChunk, secondHeight, secondWidth);
 
                     break;
                 }
