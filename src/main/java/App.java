@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class App extends Application {
     public static Button[][] sectionFirstSeats, sectionSecondSeats;
 
@@ -60,8 +62,8 @@ public class App extends Application {
         Parent root = loader.load();
 
         BorderPane borderPane = (BorderPane) loader.getNamespace().get("borderPane");
-        GridPane sectionFirst =  (GridPane) loader.getNamespace().get("sectionFirst");
-        GridPane sectionSecond =  (GridPane) loader.getNamespace().get("sectionSecond");
+        GridPane sectionFirst = (GridPane) loader.getNamespace().get("sectionFirst");
+        GridPane sectionSecond = (GridPane) loader.getNamespace().get("sectionSecond");
         Label currentSeat = (Label) loader.getNamespace().get("currentSeat");
         ChoiceBox movieBox = (ChoiceBox) loader.getNamespace().get("movieBox");
 
@@ -70,6 +72,16 @@ public class App extends Application {
 
         sectionFirstSeats = fillSeats(sectionFirst, currentSeat, 'A');
         sectionSecondSeats = fillSeats(sectionSecond, currentSeat, 'D');
+
+        File seatsStateFile = new File("seats_state.txt");
+        if (!seatsStateFile.exists())
+            DataManager.generateFile(
+                    movies,
+                    sectionFirst.getRowCount(),
+                    sectionFirst.getColumnCount(),
+                    sectionSecond.getRowCount(),
+                    sectionSecond.getColumnCount()
+            );
 
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
