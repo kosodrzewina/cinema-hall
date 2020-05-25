@@ -1,11 +1,45 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class DataManager {
     // @TODO
-    public static boolean[][] getSeatState() {
-        boolean[][] state = new boolean[0][0];
+    private static boolean[][] dataToBoolArray(StringBuilder chunk) {
+        boolean[][] bools = new boolean[0][];
+        return bools;
+    }
+
+    // loads state of seats for a given movie
+    public static boolean[][][] loadSeatsState(String movie, int firstHeight, int firstWidth, int secondHeight, int secondWidth) {
+        boolean[][][] state = new boolean[2][][];
+        File seatsStateFile = new File("seats_state.txt");
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(seatsStateFile));
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.equals(movie + " {")) {
+                    StringBuilder dataChunk = new StringBuilder();
+
+                    // get first chunk
+                    while (!(line = bufferedReader.readLine()).equals("\t---"))
+                        dataChunk.append(line);
+
+                    state[0] = dataToBoolArray(dataChunk);
+                    dataChunk = new StringBuilder();
+
+                    // get second chunk
+                    while (!(line = bufferedReader.readLine()).equals("}"))
+                        dataChunk.append(line);
+
+                    state[1] = dataToBoolArray(dataChunk);
+
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return state;
     }
 
@@ -26,7 +60,7 @@ public class DataManager {
                     fileWriter.write("\n");
                 }
 
-                fileWriter.write("\n");
+                fileWriter.write("\t---\n");
 
                 for (int j = 0; j < secondHeight; j++) {
                     for (int k = 0; k < secondWidth; k++) {
