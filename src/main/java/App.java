@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.BorderPane;
@@ -57,9 +58,15 @@ public class App extends Application {
         stage.setTitle("Cinema Hall");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/hall.fxml"));
         Parent root = loader.load();
+
+        BorderPane borderPane = (BorderPane) loader.getNamespace().get("borderPane");
         GridPane sectionFirst =  (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond =  (GridPane) loader.getNamespace().get("sectionSecond");
         Label currentSeat = (Label) loader.getNamespace().get("currentSeat");
+        ChoiceBox movieBox = (ChoiceBox) loader.getNamespace().get("movieBox");
+
+        String[] movies = {"Now You See Me", "Vampire Assassin", "Order of the Black Eagle"};
+        movieBox.getItems().addAll(movies);
 
         sectionFirstSeats = fillSeats(sectionFirst, currentSeat, 'A');
         sectionSecondSeats = fillSeats(sectionSecond, currentSeat, 'D');

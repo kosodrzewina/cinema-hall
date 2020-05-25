@@ -102,7 +102,7 @@
                <left>
                   <VBox prefHeight="406.0" prefWidth="186.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
                      <children>
-                        <ChoiceBox prefWidth="500.0" />
+                        <ChoiceBox fx:id="movieBox" prefWidth="500.0" />
                         <Label fx:id="currentSeat" text="Wybrane miejsce:" textFill="WHITE" />
                      </children>
                   </VBox>
