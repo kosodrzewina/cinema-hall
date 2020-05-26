@@ -35,6 +35,15 @@ public class App extends Application {
         return seats;
     }
 
+    public static void updateSeats(boolean[][] data, Button[][] seats) {
+        for (int i = 0; i < seats.length; i++) {
+            for (int j = 0; j < seats[i].length; j++) {
+                if (data[i][j])
+                    seats[i][j].setDisable(true);
+            }
+        }
+    }
+
     public static void blinkLogin(PasswordField passwordField) {
         String originalStyle = "-fx-background-color: #FFFFFF";
         String flashStyle = "-fx-background-color: #D32F2F";
