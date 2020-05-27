@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.GridPane;
 
 public class HallController {
     private final String password = "haslo123";
@@ -9,6 +10,12 @@ public class HallController {
 
     @FXML
     private PasswordField passwordField;
+
+    @FXML
+    private GridPane sectionFirst;
+
+    @FXML
+    private GridPane sectionSecond;
 
     public static boolean getAccess() {
         return access;
