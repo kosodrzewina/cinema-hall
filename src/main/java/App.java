@@ -71,7 +71,7 @@ public class App extends Application {
 
         GridPane sectionFirst = (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond = (GridPane) loader.getNamespace().get("sectionSecond");
-        Label currentSeat = (Label) loader.getNamespace().get("currentSeat");
+        Label currentSeat = (Label) loader.getNamespace().get("selectedSeat");
         ChoiceBox movieBox = (ChoiceBox) loader.getNamespace().get("movieBox");
 
         String[] movies = {"Now You See Me", "Vampire Assassin", "Order of the Black Eagle"};
