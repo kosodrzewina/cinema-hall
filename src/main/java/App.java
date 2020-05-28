@@ -71,14 +71,15 @@ public class App extends Application {
 
         GridPane sectionFirst = (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond = (GridPane) loader.getNamespace().get("sectionSecond");
-        Label currentSeat = (Label) loader.getNamespace().get("selectedSeat");
+        Label selectedSeat = (Label) loader.getNamespace().get("selectedSeat");
+        Label selectedShowing = (Label) loader.getNamespace().get("selectedShowing");
         ChoiceBox movieBox = (ChoiceBox) loader.getNamespace().get("movieBox");
 
         String[] movies = {"Now You See Me", "Vampire Assassin", "Order of the Black Eagle"};
         movieBox.getItems().addAll(movies);
 
-        sectionFirstSeats = fillSeats(sectionFirst, currentSeat, 'A');
-        sectionSecondSeats = fillSeats(sectionSecond, currentSeat, 'D');
+        sectionFirstSeats = fillSeats(sectionFirst, selectedSeat, 'A');
+        sectionSecondSeats = fillSeats(sectionSecond, selectedSeat, 'D');
 
         File seatsStateFile = new File("seats_state.txt");
         if (!seatsStateFile.exists())
@@ -101,7 +102,7 @@ public class App extends Application {
         });
 
         movieBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(newValue);
+            selectedShowing.setText("Wybrany film: " + newValue);
         });
     }
 }

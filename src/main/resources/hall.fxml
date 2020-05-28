@@ -104,6 +104,7 @@
                      <children>
                         <ChoiceBox fx:id="movieBox" prefWidth="500.0" />
                         <Label fx:id="selectedSeat" text="Wybrane miejsce:" textFill="WHITE" />
+                        <Label fx:id="selectedShowing" text="Wybrany film:" textFill="WHITE" />
                      </children>
                   </VBox>
                </left>
