@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -70,7 +69,6 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/hall.fxml"));
         Parent root = loader.load();
 
-        BorderPane borderPane = (BorderPane) loader.getNamespace().get("borderPane");
         GridPane sectionFirst = (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond = (GridPane) loader.getNamespace().get("sectionSecond");
         Label currentSeat = (Label) loader.getNamespace().get("currentSeat");
@@ -100,6 +98,10 @@ public class App extends Application {
                 blinkLogin((PasswordField) loader.getNamespace().get("passwordField"));
                 windowEvent.consume();
             }
+        });
+
+        movieBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(newValue);
         });
     }
 }
