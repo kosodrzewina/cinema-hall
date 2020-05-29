@@ -35,12 +35,22 @@ public class App extends Application {
     }
 
     public static void updateSeats(boolean[][] data, Button[][] seats) {
-        for (int i = 0; i < seats.length; i++) {
+        for (int i = 0; i < seats.length; i++)
             for (int j = 0; j < seats[i].length; j++) {
-                if (data[i][j])
+                if (data[i][j]) {
                     seats[i][j].setDisable(true);
+                    seats[i][j].setStyle("-fx-background-color:  #D32F2F");
+                } else {
+                    seats[i][j].setDisable(false);
+                    seats[i][j].setStyle(
+                            "-fx-background-color:\n" +
+                            "            #090a0c,\n" +
+                            "            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" +
+                            "            linear-gradient(#20262b, #191d22),\n" +
+                            "            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0))"
+                    );
+                }
             }
-        }
     }
 
     public static void blinkLogin(PasswordField passwordField) {
