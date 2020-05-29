@@ -117,6 +117,7 @@ public class App extends Application {
                 for (int i = 0; i < movies.length; i++) {
                     if (movies[i] == newValue) {
                         selectedShowing.setText(newValue.toString());
+                        selectedSeat.setText("---");
 
                         boolean[][][] seatsState = DataManager.loadSeatsState(
                                 newValue.toString(),
