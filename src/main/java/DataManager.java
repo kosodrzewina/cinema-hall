@@ -21,7 +21,9 @@ public class DataManager {
     }
 
     // loads state of seats for a given movie
-    public static boolean[][][] loadSeatsState(String movie, int firstHeight, int firstWidth, int secondHeight, int secondWidth) {
+    public static boolean[][][] loadSeatsState(
+            String movie, int firstHeight, int firstWidth, int secondHeight, int secondWidth
+    ) {
         boolean[][][] state = new boolean[2][][];
         File seatsStateFile = new File("seats_state.txt");
 
@@ -57,7 +59,9 @@ public class DataManager {
     }
 
     // generates file with all seats available
-    public static void generateFile(String[] movies, int firstHeight, int firstWidth, int secondHeight, int secondWidth) {
+    public static void generateFile(
+            String[] movies, int firstHeight, int firstWidth, int secondHeight, int secondWidth
+    ) {
         try {
             File seatsStateFile = new File("seats_state.txt");
             FileWriter fileWriter = new FileWriter(seatsStateFile, true);
