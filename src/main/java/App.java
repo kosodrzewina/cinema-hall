@@ -22,7 +22,7 @@ public class App extends Application {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 Button temp = new Button(firstRow + Integer.toString(j + 1));
                 temp.setId("button" + temp.getText());
-                temp.setOnAction(actionEvent -> currentSeat.setText("Wybrane miejsce: " + temp.getText()));
+                temp.setOnAction(actionEvent -> currentSeat.setText(temp.getText()));
                 temp.setDisable(true);
 
                 gridPane.add(temp, j, i);
@@ -102,7 +102,7 @@ public class App extends Application {
         });
 
         movieBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            selectedShowing.setText("Wybrany film: " + newValue);
+            selectedShowing.setText(newValue.toString());
         });
     }
 }

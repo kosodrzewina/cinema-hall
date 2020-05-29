@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HallController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HallController">
    <children>
       <HBox layoutX="210.0" layoutY="150.0" prefHeight="472.0" prefWidth="712.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-112.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -103,8 +112,10 @@
                   <VBox prefHeight="406.0" prefWidth="186.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
                      <children>
                         <ChoiceBox fx:id="movieBox" prefWidth="500.0" />
-                        <Label fx:id="selectedSeat" text="Wybrane miejsce:" textFill="WHITE" />
-                        <Label fx:id="selectedShowing" text="Wybrany film:" textFill="WHITE" />
+                        <Label text="Wybrane miejsce:" textFill="WHITE" />
+                        <Label fx:id="selectedSeat" text="---" textFill="WHITE" />
+                        <Label text="Wybrany film:" textFill="WHITE" />
+                        <Label fx:id="selectedShowing" text="---" textFill="WHITE" />
                      </children>
                   </VBox>
                </left>
