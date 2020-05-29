@@ -37,7 +37,7 @@ public class App extends Application {
                 Button temp = new Button(firstRow + Integer.toString(j + 1));
                 temp.setId("button" + temp.getText());
 
-                temp.setOnAction(actionEvent ->  {
+                temp.setOnAction(actionEvent -> {
                     highlightSeat(temp);
                     currentHighlightedSeat = temp;
                     currentSeat.setText(temp.getText());
