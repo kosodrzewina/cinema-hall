@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
 
@@ -16,6 +17,12 @@ public class HallController {
 
     @FXML
     private GridPane sectionSecond;
+
+    @FXML
+    private Label selectedSeat;
+
+    @FXML
+    private Label selectedShowing;
 
     public static boolean getAccess() {
         return access;
@@ -39,5 +46,12 @@ public class HallController {
             App.blinkLogin(passwordField);
 
         passwordField.setText("");
+    }
+
+    public void onSubmitButtonClick(ActionEvent actionEvent) {
+        if (!selectedSeat.getText().equals("---") && !selectedShowing.getText().equals("---")) {
+            // @TODO
+            // add save function in DataManager
+        }
     }
 }

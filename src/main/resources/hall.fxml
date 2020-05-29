@@ -99,7 +99,7 @@
                         <Label maxWidth="1.7976931348623157E308" style="-fx-background-color: #424242;" text="Wybrany film:" textFill="WHITE" />
                         <Label fx:id="selectedShowing" text="---" textFill="WHITE" />
                         <ImageView fx:id="thumbnailView" fitHeight="237.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#onSubmitButtonClick" text="Zarezerwuj miejsce" />
                      </children>
                   </VBox>
                </left>
