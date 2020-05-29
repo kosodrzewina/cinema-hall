@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
@@ -24,6 +25,12 @@ public class HallController {
     @FXML
     private Label selectedShowing;
 
+    @FXML
+    private ChoiceBox movieBox;
+
+    @FXML
+    private Button submitButton;
+
     public static boolean getAccess() {
         return access;
     }
@@ -39,6 +46,8 @@ public class HallController {
             access = true;
             passwordField.setPromptText("zalogowano");
             passwordField.setDisable(true);
+            movieBox.setDisable(false);
+            submitButton.setDisable(false);
 
             unlockSeats(App.sectionFirstSeats);
             unlockSeats(App.sectionSecondSeats);
