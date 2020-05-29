@@ -116,6 +116,8 @@ public class App extends Application {
             if (HallController.getAccess()) {
                 for (int i = 0; i < movies.length; i++) {
                     if (movies[i] == newValue) {
+                        selectedShowing.setText(newValue.toString());
+
                         boolean[][][] seatsState = DataManager.loadSeatsState(
                                 newValue.toString(),
                                 sectionFirst.getRowCount(),
