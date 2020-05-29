@@ -57,10 +57,52 @@ public class HallController {
         passwordField.setText("");
     }
 
+    // returns 0 - first section or 1 - second section
+    private static boolean determineSection(String seatMark) {
+        return (seatMark.charAt(0) > 'C');
+    }
+
     public void onSubmitButtonClick(ActionEvent actionEvent) {
         if (!selectedSeat.getText().equals("---") && !selectedShowing.getText().equals("---")) {
-            // @TODO
-            // add save function in DataManager
+            boolean sectionIndex = determineSection(App.currentHighlightedSeat.getText());
+
+            if (!sectionIndex) {
+                DataManager.saveData(
+                        selectedShowing.getText(),
+                        App.currentHighlightedSeat.getText(),
+                        false,
+                        2
+                );
+
+                App.updateSeats(
+                        DataManager.loadSeatsState(
+                                selectedShowing.getText(),
+                                sectionFirst.getRowCount(),
+                                sectionFirst.getColumnCount(),
+                                sectionSecond.getRowCount(),
+                                sectionSecond.getColumnCount()
+                        )[0],
+                        App.sectionFirstSeats
+                );
+            } else {
+                DataManager.saveData(
+                        selectedShowing.getText(),
+                        App.currentHighlightedSeat.getText(),
+                        true,
+                        2
+                );
+
+                App.updateSeats(
+                        DataManager.loadSeatsState(
+                                selectedShowing.getText(),
+                                sectionFirst.getRowCount(),
+                                sectionFirst.getColumnCount(),
+                                sectionSecond.getRowCount(),
+                                sectionSecond.getColumnCount()
+                        )[1],
+                        App.sectionSecondSeats
+                );
+            }
         }
     }
 }
