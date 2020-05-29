@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -19,6 +21,8 @@ public class App extends Application {
             "radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0))";
     public static Button[][] sectionFirstSeats, sectionSecondSeats;
     private Button currentHighlightedSeat;
+    private File thumbnailDir = new File("./src/main/resources/thumbnails");
+    private File[] thumbnails = thumbnailDir.listFiles();
 
     // highlights selected seat and makes sure the old one goes back to the standard style
     private void highlightSeat(Button selectedSeat) {
@@ -99,6 +103,7 @@ public class App extends Application {
         Label selectedSeat = (Label) loader.getNamespace().get("selectedSeat");
         Label selectedShowing = (Label) loader.getNamespace().get("selectedShowing");
         ChoiceBox movieBox = (ChoiceBox) loader.getNamespace().get("movieBox");
+        ImageView thumbnailView = (ImageView) loader.getNamespace().get("thumbnailView");
 
         String[] movies = {"Now You See Me", "Vampire Assassin", "Order of the Black Eagle"};
         movieBox.getItems().addAll(movies);
@@ -132,6 +137,15 @@ public class App extends Application {
                     if (movies[i] == newValue) {
                         selectedShowing.setText(newValue.toString());
                         selectedSeat.setText("---");
+
+                        for (int j = 0; j < thumbnails.length; j++) {
+                            if ((newValue + ".jpg").equals(thumbnails[j].getName())) {
+                                thumbnailView.setImage(new Image(getClass().getResource(
+                                        "thumbnails/" + thumbnails[j].getName()
+                                ).toString()));
+                                break;
+                            }
+                        }
 
                         boolean[][][] seatsState = DataManager.loadSeatsState(
                                 newValue.toString(),
