@@ -93,9 +93,9 @@
                   <VBox prefHeight="406.0" prefWidth="186.0" style="-fx-background-color: #616161;" BorderPane.alignment="CENTER">
                      <children>
                         <ChoiceBox fx:id="movieBox" prefWidth="500.0" />
-                        <Label text="Wybrane miejsce:" textFill="WHITE" />
+                        <Label maxWidth="1.7976931348623157E308" style="-fx-background-color: #424242;" text="Wybrane miejsce:" textFill="WHITE" />
                         <Label fx:id="selectedSeat" text="---" textFill="WHITE" />
-                        <Label text="Wybrany film:" textFill="WHITE" />
+                        <Label maxWidth="1.7976931348623157E308" style="-fx-background-color: #424242;" text="Wybrany film:" textFill="WHITE" />
                         <Label fx:id="selectedShowing" text="---" textFill="WHITE" />
                      </children>
                   </VBox>
