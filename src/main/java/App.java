@@ -69,6 +69,7 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/hall.fxml"));
         Parent root = loader.load();
 
+        // fx components
         GridPane sectionFirst = (GridPane) loader.getNamespace().get("sectionFirst");
         GridPane sectionSecond = (GridPane) loader.getNamespace().get("sectionSecond");
         Label selectedSeat = (Label) loader.getNamespace().get("selectedSeat");
@@ -91,7 +92,7 @@ public class App extends Application {
                     sectionSecond.getColumnCount()
             );
 
-        stage.setScene(new Scene(root, 1280, 720));
+        stage.setScene(new Scene(root, 1107, 680));
         stage.show();
 
         stage.setOnCloseRequest(windowEvent -> {
