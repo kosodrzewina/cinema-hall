@@ -12,7 +12,21 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class App extends Application {
+    private static String standardButtonBackgroundStyle = "-fx-background-color:\n" +
+            "#090a0c,\n" +
+            "linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" +
+            "linear-gradient(#20262b, #191d22),\n" +
+            "radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0))";
     public static Button[][] sectionFirstSeats, sectionSecondSeats;
+    private Button currentHighlightedSeat;
+
+    // highlights selected seat and makes sure the old one goes back to the standard style
+    private void highlightSeat(Button selectedSeat) {
+        if (currentHighlightedSeat != null)
+            currentHighlightedSeat.setStyle(standardButtonBackgroundStyle);
+
+        selectedSeat.setStyle("-fx-background-color: #8BC34A");
+    }
 
     // creates buttons in grid pane and returns array of these buttons
     public Button[][] fillSeats(GridPane gridPane, Label currentSeat, char firstRow) {
@@ -22,7 +36,13 @@ public class App extends Application {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 Button temp = new Button(firstRow + Integer.toString(j + 1));
                 temp.setId("button" + temp.getText());
-                temp.setOnAction(actionEvent -> currentSeat.setText(temp.getText()));
+
+                temp.setOnAction(actionEvent ->  {
+                    highlightSeat(temp);
+                    currentHighlightedSeat = temp;
+                    currentSeat.setText(temp.getText());
+                });
+
                 temp.setDisable(true);
 
                 gridPane.add(temp, j, i);
@@ -42,13 +62,7 @@ public class App extends Application {
                     seats[i][j].setStyle("-fx-background-color:  #D32F2F");
                 } else {
                     seats[i][j].setDisable(false);
-                    seats[i][j].setStyle(
-                            "-fx-background-color:\n" +
-                            "            #090a0c,\n" +
-                            "            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" +
-                            "            linear-gradient(#20262b, #191d22),\n" +
-                            "            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0))"
-                    );
+                    seats[i][j].setStyle(standardButtonBackgroundStyle);
                 }
             }
     }
