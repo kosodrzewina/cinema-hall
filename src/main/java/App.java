@@ -103,7 +103,22 @@ public class App extends Application {
         });
 
         movieBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            selectedShowing.setText(newValue.toString());
+            if (HallController.getAccess()) {
+                for (int i = 0; i < movies.length; i++) {
+                    if (movies[i] == newValue) {
+                        boolean[][][] seatsState = DataManager.loadSeatsState(
+                                newValue.toString(),
+                                sectionFirst.getRowCount(),
+                                sectionFirst.getColumnCount(),
+                                sectionSecond.getRowCount(),
+                                sectionSecond.getColumnCount()
+                        );
+
+                        updateSeats(seatsState[0], sectionFirstSeats);
+                        updateSeats(seatsState[1], sectionSecondSeats);
+                    }
+                }
+            }
         });
     }
 }
