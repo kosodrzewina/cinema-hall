@@ -1,6 +1,50 @@
 import java.io.*;
 
 public class DataManager {
+    // save seat as occupied (0 - first section, 1 - second section)
+    public static void saveData(String movie, String seatMark, boolean section, int width) {
+        File seatsStateFile = new File("seats_state.txt");
+        String endChunk = (!section) ? "\t---" : "}";
+        int seatPosition = seatMarkToPosition(seatMark, width);
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(seatsStateFile));
+            StringBuffer stringBuffer = new StringBuffer();
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.equals(movie + " {")) {
+                    int index = 0;
+
+                    while (!(line = bufferedReader.readLine()).equals(endChunk)) {
+                        for (int i = 0; i < line.length(); i++) {
+                            if (line.charAt(i) == '0' || line.charAt(i) == '1') {
+                                if (index == seatPosition) {
+                                    char[] currentLine = line.toCharArray();
+                                    currentLine[i] = '1';
+                                    stringBuffer.append(currentLine);
+                                    bufferedReader.close();
+
+                                    return;
+                                }
+                                index++;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static int seatMarkToPosition(String seatMark, int width) {
+        int row = seatMark.charAt(0) - 65;
+        int column = Character.getNumericValue(seatMark.charAt(1)) - 1;
+
+        return row * width + column;
+    }
+
     // gets raw chunk and returns boolean array based on it
     private static boolean[][] dataToBoolArray(StringBuilder chunk, int height, int width) {
         boolean[][] bools = new boolean[height][width];
@@ -47,6 +91,7 @@ public class DataManager {
                         dataChunk.append(line);
 
                     state[1] = dataToBoolArray(dataChunk, secondHeight, secondWidth);
+                    bufferedReader.close();
 
                     break;
                 }
