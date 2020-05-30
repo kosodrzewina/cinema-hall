@@ -20,7 +20,7 @@ public class App extends Application {
             "linear-gradient(#20262b, #191d22),\n" +
             "radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0))";
     public static Button[][] sectionFirstSeats, sectionSecondSeats;
-    private Button currentHighlightedSeat;
+    public static Button currentHighlightedSeat;
     private File thumbnailDir = new File("./src/main/resources/thumbnails");
     private File[] thumbnails = thumbnailDir.listFiles();
 
