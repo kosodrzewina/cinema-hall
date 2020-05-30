@@ -6,6 +6,7 @@ public class DataManager {
         File seatsStateFile = new File("seats_state.txt");
         String endChunk = (!section) ? "\t---" : "}";
         int seatPosition = seatMarkToPosition(seatMark, width);
+        boolean modified = false, appended = false;
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(seatsStateFile));
@@ -13,26 +14,60 @@ public class DataManager {
             String line;
 
             while ((line = bufferedReader.readLine()) != null) {
+                stringBuffer.append(line);
+                stringBuffer.append("\n");
+
                 if (line.equals(movie + " {")) {
                     int index = 0;
 
                     while (!(line = bufferedReader.readLine()).equals(endChunk)) {
-                        for (int i = 0; i < line.length(); i++) {
-                            if (line.charAt(i) == '0' || line.charAt(i) == '1') {
-                                if (index == seatPosition) {
-                                    char[] currentLine = line.toCharArray();
-                                    currentLine[i] = '1';
-                                    stringBuffer.append(currentLine);
-                                    bufferedReader.close();
+                        if (!modified) {
+                            for (int i = 0; i < line.length(); i++) {
+                                if (line.charAt(i) == '0' || line.charAt(i) == '1') {
+                                    if (index == seatPosition) {
+                                        System.out.println(seatMark);
+                                        System.out.println(index);
+                                        System.out.println(seatPosition);
 
-                                    return;
+                                        char[] currentLine = line.toCharArray();
+                                        currentLine[i] = '1';
+                                        stringBuffer.append(new String(currentLine));
+                                        stringBuffer.append("\n");
+
+                                        modified = true;
+                                        appended = true;
+                                    }
+
+                                    index++;
                                 }
-                                index++;
                             }
                         }
+
+                        if (!appended) {
+                            stringBuffer.append(line);
+                            stringBuffer.append("\n");
+                        }
+
+                        appended = false;
                     }
+
+                    stringBuffer.append(endChunk);
+                    stringBuffer.append("\n");
                 }
             }
+
+            writeToFile(seatsStateFile, stringBuffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeToFile(File file, StringBuffer stringBuffer) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(stringBuffer.toString().getBytes());
+            fileOutputStream.flush();
+            fileOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
