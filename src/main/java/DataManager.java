@@ -6,7 +6,7 @@ public class DataManager {
         File seatsStateFile = new File("seats_state.txt");
         String endChunk = (!section) ? "\t---" : "}";
         int seatPosition = seatMarkToPosition(seatMark, width);
-        boolean modified = false, appended = false;
+        boolean modified = false, appended = false, reachedMovie = false;
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(seatsStateFile));
@@ -19,46 +19,50 @@ public class DataManager {
                 stringBuffer.append("\n");
 
                 // when found sections for the given movie
-                if (line.equals(movie + " {")) {
+                if (line.equals(movie + " {") || (line.equals("\t---") && reachedMovie)) {
+                    reachedMovie = true;
                     int index = 0;
 
-                    // goes through seats until end of the chunk
-                    while (!(line = bufferedReader.readLine()).equals(endChunk)) {
-                        if (!modified) {
-                            // checks every char in the line in order to find the one we're looking for
-                            for (int i = 0; i < line.length(); i++) {
-                                if (line.charAt(i) == '0' || line.charAt(i) == '1') {
-                                    if (index == seatPosition) {
-                                        System.out.println(seatMark);
-                                        System.out.println(index);
-                                        System.out.println(seatPosition);
+                    if ((line.equals(movie + " {") && !section) || (line.equals("\t---") && section)) {
+                        // goes through seats until end of the chunk
+                        while (!(line = bufferedReader.readLine()).equals(endChunk)) {
+                            if (!modified) {
+                                // checks every char in the line in order to find the one we're looking for
+                                for (int i = 0; i < line.length(); i++) {
+                                    if (line.charAt(i) == '0' || line.charAt(i) == '1') {
+                                        if (index == seatPosition) {
+                                            System.out.println("TAKEN: " + seatMark + " " + movie);
 
-                                        // modifies the line and append to the string buffer
-                                        char[] currentLine = line.toCharArray();
-                                        currentLine[i] = '1';
-                                        stringBuffer.append(new String(currentLine));
-                                        stringBuffer.append("\n");
+                                            // modifies the line and appends to the string buffer
+                                            char[] currentLine = line.toCharArray();
+                                            currentLine[i] = '1';
+                                            stringBuffer.append(new String(currentLine));
+                                            stringBuffer.append("\n");
+                                            reachedMovie = false;
 
-                                        modified = true;
-                                        appended = true;
+                                            modified = true;
+                                            appended = true;
+                                        }
+
+                                        index++;
                                     }
-
-                                    index++;
                                 }
                             }
-                        }
 
-                        if (!appended) {
-                            stringBuffer.append(line);
-                            stringBuffer.append("\n");
-                        }
+                            if (!appended) {
+                                stringBuffer.append(line);
+                                stringBuffer.append("\n");
+                            }
 
-                        appended = false;
+                            appended = false;
+                        }
                     }
 
                     // after analysing the important section, appends the end chunk fragment
-                    stringBuffer.append(endChunk);
-                    stringBuffer.append("\n");
+                    if (!reachedMovie) {
+                        stringBuffer.append(endChunk);
+                        stringBuffer.append("\n");
+                    }
                 }
             }
 
@@ -86,8 +90,8 @@ public class DataManager {
         if (seatMark.length() == 2)
              column = Character.getNumericValue(seatMark.charAt(1)) - 1;
         else
-            column = Character.getNumericValue(seatMark.charAt(1)) * 10 +
-                     Character.getNumericValue(seatMark.charAt(2)) - 1;
+            column = Character.getNumericValue(seatMark.charAt(1)) * 10
+                     + Character.getNumericValue(seatMark.charAt(2)) - 1;
 
 
         return row * width + column;
