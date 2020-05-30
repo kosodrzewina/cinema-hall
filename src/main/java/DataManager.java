@@ -39,8 +39,15 @@ public class DataManager {
     }
 
     private static int seatMarkToPosition(String seatMark, int width) {
-        int row = seatMark.charAt(0) - 65;
-        int column = Character.getNumericValue(seatMark.charAt(1)) - 1;
+        int row = (seatMark.charAt(0) <= 'C') ? seatMark.charAt(0) - 65 : seatMark.charAt(0) - 68;
+        int column;
+
+        if (seatMark.length() == 2)
+             column = Character.getNumericValue(seatMark.charAt(1)) - 1;
+        else
+            column = Character.getNumericValue(seatMark.charAt(1)) * 10 +
+                     Character.getNumericValue(seatMark.charAt(2)) - 1;
+
 
         return row * width + column;
     }
