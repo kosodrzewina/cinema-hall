@@ -26,8 +26,12 @@ public class App extends Application {
 
     // highlights selected seat and makes sure the old one goes back to the standard style
     private void highlightSeat(Button selectedSeat) {
-        if (currentHighlightedSeat != null)
-            currentHighlightedSeat.setStyle(standardButtonBackgroundStyle);
+        if (currentHighlightedSeat != null) {
+            currentHighlightedSeat.setStyle(
+                    (currentHighlightedSeat.isDisable())
+                            ? "-fx-background-color:  #D32F2F"
+                            : standardButtonBackgroundStyle);
+        }
 
         selectedSeat.setStyle("-fx-background-color: #8BC34A");
     }
