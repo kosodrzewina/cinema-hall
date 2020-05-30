@@ -13,15 +13,19 @@ public class DataManager {
             StringBuffer stringBuffer = new StringBuffer();
             String line;
 
+            // goes through the entire file
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.append(line);
                 stringBuffer.append("\n");
 
+                // when found sections for the given movie
                 if (line.equals(movie + " {")) {
                     int index = 0;
 
+                    // goes through seats until end of the chunk
                     while (!(line = bufferedReader.readLine()).equals(endChunk)) {
                         if (!modified) {
+                            // checks every char in the line in order to find the one we're looking for
                             for (int i = 0; i < line.length(); i++) {
                                 if (line.charAt(i) == '0' || line.charAt(i) == '1') {
                                     if (index == seatPosition) {
@@ -29,6 +33,7 @@ public class DataManager {
                                         System.out.println(index);
                                         System.out.println(seatPosition);
 
+                                        // modifies the line and append to the string buffer
                                         char[] currentLine = line.toCharArray();
                                         currentLine[i] = '1';
                                         stringBuffer.append(new String(currentLine));
@@ -51,6 +56,7 @@ public class DataManager {
                         appended = false;
                     }
 
+                    // after analysing the important section, appends the end chunk fragment
                     stringBuffer.append(endChunk);
                     stringBuffer.append("\n");
                 }
