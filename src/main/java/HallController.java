@@ -71,7 +71,7 @@ public class HallController {
                         selectedShowing.getText(),
                         App.currentHighlightedSeat.getText(),
                         false,
-                        2
+                        sectionFirst.getColumnCount()
                 );
 
                 App.updateSeats(
@@ -89,7 +89,7 @@ public class HallController {
                         selectedShowing.getText(),
                         App.currentHighlightedSeat.getText(),
                         true,
-                        2
+                        sectionSecond.getColumnCount()
                 );
 
                 App.updateSeats(
