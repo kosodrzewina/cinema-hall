@@ -98,7 +98,7 @@
                         <Label fx:id="selectedSeat" text="---" textFill="WHITE" />
                         <Label maxWidth="1.7976931348623157E308" style="-fx-background-color: #424242;" text="Wybrany film:" textFill="WHITE" />
                         <Label fx:id="selectedShowing" text="---" textFill="WHITE" />
-                        <ImageView fx:id="thumbnailView" fitHeight="237.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="thumbnailView" fitHeight="237.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true" />
                         <Button fx:id="submitButton" disable="true" mnemonicParsing="false" onAction="#onSubmitButtonClick" text="Zarezerwuj miejsce" />
                      </children>
                   </VBox>
